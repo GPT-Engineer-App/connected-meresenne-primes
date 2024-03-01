@@ -27,7 +27,7 @@ const Index = () => {
             isClosable: true,
           });
         }
-      }, 1000);
+      }, 100);
     }
 
     return () => {
