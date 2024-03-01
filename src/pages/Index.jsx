@@ -17,7 +17,8 @@ const Index = () => {
     let worker;
     if (isComputing) {
       worker = setInterval(() => {
-        const candidate = 2 ** (initialExponent + foundPrimes.length) - 1;
+        const nextExponent = initialExponent + foundPrimes.length;
+        const candidate = 2 ** nextExponent - 1;
         if (isPrime(candidate)) {
           setFoundPrimes((prevPrimes) => [...prevPrimes, candidate]);
           toast({
