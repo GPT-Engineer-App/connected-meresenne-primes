@@ -49,7 +49,7 @@ const Index = () => {
         </Heading>
         <Text>Join the quest to find new Mersenne primes! Click start to begin the computation.</Text>
         <Box as="form" onSubmit={(e) => e.preventDefault()}>
-          <Input placeholder="Enter initial exponent" size="md" type="number" min={2} value={initialExponent} onChange={(e) => setInitialExponent(Number(e.target.value))} mr={2} />
+          <Input placeholder="Enter initial exponent" size="md" type="number" value={initialExponent} onChange={(e) => setInitialExponent(Number(e.target.value))} mr={2} />
           <Button leftIcon={<FaPlay />} colorScheme="green" onClick={handleStart} isDisabled={isComputing} mr={2}>
             Start
           </Button>
