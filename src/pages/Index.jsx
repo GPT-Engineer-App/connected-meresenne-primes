@@ -8,7 +8,7 @@ const isPrime = (num) => {
 };
 
 const Index = () => {
-  const [initialExponent, setInitialExponent] = useState(2);
+  const [initialExponent, setInitialExponent] = useState(3);
   const [isComputing, setIsComputing] = useState(false);
   const [foundPrimes, setFoundPrimes] = useState([]);
   const toast = useToast();
