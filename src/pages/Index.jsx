@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Button, Container, Heading, Text, VStack, List, ListItem, useToast } from "@chakra-ui/react";
+import { Box, Button, Container, Heading, Text, VStack, List, ListItem, useToast, Input } from "@chakra-ui/react";
 import { FaPlay, FaStop } from "react-icons/fa";
 
 const isPrime = (num) => {
@@ -8,6 +8,7 @@ const isPrime = (num) => {
 };
 
 const Index = () => {
+  const [initialExponent, setInitialExponent] = useState(2);
   const [isComputing, setIsComputing] = useState(false);
   const [foundPrimes, setFoundPrimes] = useState([]);
   const toast = useToast();
@@ -16,7 +17,7 @@ const Index = () => {
     let worker;
     if (isComputing) {
       worker = setInterval(() => {
-        const candidate = 2 ** (foundPrimes.length + 2) - 1;
+        const candidate = 2 ** (initialExponent + foundPrimes.length) - 1;
         if (isPrime(candidate)) {
           setFoundPrimes((prevPrimes) => [...prevPrimes, candidate]);
           toast({
@@ -47,7 +48,8 @@ const Index = () => {
           Mersenne Prime Generator
         </Heading>
         <Text>Join the quest to find new Mersenne primes! Click start to begin the computation.</Text>
-        <Box>
+        <Box as="form" onSubmit={(e) => e.preventDefault()}>
+          <Input placeholder="Enter initial exponent" size="md" type="number" min={2} value={initialExponent} onChange={(e) => setInitialExponent(Number(e.target.value))} mr={2} />
           <Button leftIcon={<FaPlay />} colorScheme="green" onClick={handleStart} isDisabled={isComputing} mr={2}>
             Start
           </Button>
